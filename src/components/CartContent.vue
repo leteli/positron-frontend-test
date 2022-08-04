@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import formatPrice from "../store/formatPrice.js";
+import formatPrice from "../formatPrice.js";
 const store = useStore();
 const items = computed(() => store.state.cart.selectedItems);
 
@@ -26,9 +26,10 @@ function remove(id) {
 <template>
   <div class="selected-items">
     <div
-      v-for="item in items"
+      v-for="(item, index) in items"
       :key="item.id"
-      class="selected-item selected-items__first-item"
+      :class="{ 'selected-items__first-item': index === 0 }"
+      class="selected-item"
     >
       <img
         class="selected-item__image"
