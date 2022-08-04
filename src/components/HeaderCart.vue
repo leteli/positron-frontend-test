@@ -1,10 +1,19 @@
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import ruPluralize from "../pluralize.js";
 
 const store = useStore();
 const totalPrice = computed(() => store.getters.getTotalPrice);
 const totalCount = computed(() => store.getters.getTotalCount);
+const pluralizedItems = computed(() => {
+  const map = {
+    1: "товар",
+    2: "товара",
+    3: "товаров",
+  };
+  return map[ruPluralize(totalCount.value)];
+});
 </script>
 
 <template>
@@ -29,7 +38,7 @@ const totalCount = computed(() => store.getters.getTotalCount);
         </div>
         <div class="header__cart-info">
           <span class="header__cart-title">Ваша корзина</span>
-          <span class="header__cart-items">{{ totalCount }} товара</span>
+          <span class="header__cart-items">{{ totalCount }} {{ pluralizedItems }}</span>
           <span class="header__cart-price">{{ totalPrice }} ₽</span>
         </div>
       </div>

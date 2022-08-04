@@ -1,5 +1,7 @@
 <script setup>
+import { computed } from "vue";
 import { useStore } from "vuex";
+import ruPluralize from "../pluralize.js";
 
 import CartContent from "./CartContent.vue";
 import CartResult from "./CartResult.vue";
@@ -7,6 +9,16 @@ import SettingCheckbox from "./SettingCheckbox.vue";
 import WatchedItems from "./WatchedItems.vue";
 
 const store = useStore();
+
+const totalCount = computed(() => store.getters.getTotalCount);
+const pluralizedItems = computed(() => {
+  const map = {
+    1: "товар",
+    2: "товара",
+    3: "товаров",
+  };
+  return map[ruPluralize(totalCount.value)];
+});
 
 function clear() {
   store.commit("clearCart");
@@ -34,7 +46,7 @@ function clear() {
       <div class="cart__main-section">
         <div class="cart__header">
           <h1 class="cart__title">Ваша корзина</h1>
-          <span class="cart__items-count">4 товара</span>
+          <span class="cart__items-count">{{ totalCount }} {{ pluralizedItems }}</span>
           <a @click="clear" href="#" class="cart__clear-cart">Очистить корзину</a>
         </div>
         <CartContent class="cart__items" />
