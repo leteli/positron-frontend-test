@@ -190,4 +190,12 @@ function slideForward() {
   color: var(--white);
   background-color: var(--blue);
 }
+
+@media (max-width: 1200px) {
+  .watched-items__body {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 20px;
+  }
+}
 </style>
