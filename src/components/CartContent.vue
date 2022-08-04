@@ -73,7 +73,7 @@ function remove(id) {
             </svg>
           </button>
         </div>
-        <span class="counter__price">{{ item.price }} ₽/шт.</span>
+        <span v-if="item.count > 1" class="counter__price">{{ item.price }} ₽/шт.</span>
       </div>
       <span class="selected-item__price">
         {{ getTotalPriceByItem(item.price, item.count) }} ₽
