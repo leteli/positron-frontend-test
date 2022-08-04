@@ -1,8 +1,9 @@
 const ruPluralize = (count) => {
   const countStr = count.toString();
-  const teenCheck = Number(
-    countStr[countStr.length - 2] + countStr[countStr.length - 1]
-  );
+  const countLength = countStr.length;
+  const teenCheck = countLength >= 2
+    ? Number(countStr[countLength - 2] + countStr[countLength - 1])
+    : count;
   console.log(teenCheck);
   const teen = teenCheck > 10 && teenCheck < 20;
   const endsWithOne = count % 10 === 1;
