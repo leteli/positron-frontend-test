@@ -206,7 +206,7 @@ function remove(id) {
 }
 
 .selected-item__price {
-  margin-right: 3.5rem;
+  width: 120px;
   font-size: 18px;
   font-weight: 500;
   white-space: nowrap;
