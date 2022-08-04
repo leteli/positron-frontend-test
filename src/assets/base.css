@@ -1,0 +1,53 @@
+:root {
+  --white: #ffffff;
+  --light: #f6f8fa;
+  --black-soft: #1f2432;
+  --black: #212121;
+  --dark-gray: #2c3242;
+  --light-gray: #c4c4c4;
+  --gray: #797886;
+  --line-gray: #aeb0b6;
+  --icons-gray: #33374e;
+  --blue: #0069b4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black-soft);
+}
+@font-face {
+  font-weight: 400;
+  font-family: Lato;
+  src: url(./Lato-Regular.ttf);
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: Lato;
+  src: url(./Lato-Bold.ttf);
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: Roboto;
+  src: url(./Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: Roboto;
+  src: url(./Roboto-Bold.ttf);
+}
+
+body {
+  min-height: 100vh;
+  font-family: Lato, Roboto, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--black-soft);
+  background-color: var(--white);
+}
