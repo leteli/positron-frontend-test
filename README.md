@@ -1,35 +1,22 @@
-# positron-frontend-test
+## Тестовое задание для компании Positron - студии Михаила Грохотова
 
-This template should help get you started developing with Vue 3 in Vite.
+### Задача: 
+    разработка фронтенд-части веб-приложения: страницы с корзиной интернет-магазина и слайдера с просмотренными товарами.
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Технологии: 
+    Vue 3 (Composition API, script setup), Vuex 4
+    HTML5, CSS3
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+### Установка проекта
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Запуск проекта в среде разработки
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
