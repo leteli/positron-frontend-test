@@ -6,6 +6,10 @@ const store = useStore();
 const totalPrice = computed(() => store.getters.getTotalPrice);
 const totalCount = computed(() => store.getters.getTotalCount);
 const needsSetting = computed(() => store.state.cart.needsSetting);
+
+function checkout() {
+  store.dispatch("checkout");
+}
 </script>
 
 <template>
@@ -29,7 +33,12 @@ const needsSetting = computed(() => store.state.cart.needsSetting);
       <span class="result-line__total-key">Стоимость товаров</span>
       <span class="result-line__total-value">{{ totalPrice }} ₽</span>
     </div>
-    <button class="result-section__button result-section__button_theme_primary">Оформить заказ</button>
+    <button
+      @click="checkout"
+      class="result-section__button result-section__button_theme_primary"
+    >
+      Оформить заказ
+    </button>
     <button
       class="result-section__button result-section__button_theme_outline-primary"
     >

@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import { uniqueId } from "lodash";
 import formatPrice from "./formatPrice.js";
+import axios from "axios";
 
 const store = createStore({
   state: {
@@ -121,6 +122,7 @@ const store = createStore({
           eurRange: "77.60 € – 643.86 €",
         },
       ],
+      checkoutStatus: "initial",
     },
   },
   mutations: {
@@ -154,20 +156,29 @@ const store = createStore({
       state.cart.selectedItems = [];
     },
 
+    setCheckoutStatus(state, status) {
+      state.cart.checkoutStatus = status;
+    },
+
     addWatchedItem(state, item) {
       state.cart.watchedItems.push({ ...item, id: uniqueId() });
     },
   },
-  // actions: {
-  //   async checkout ({ commit, state }) {
-  //     const items = state.cart.selectedItems;
-  //     try {
-  //       await axios.post('/api/postCart', items);
-  //     } catch (err) {
-  //     console.log(err.message);
-  //     }
-  //   },
-  // },
+  actions: {
+    checkout: async ({ commit, state }) => {
+      const items = state.cart.selectedItems;
+      console.log(items);
+      try {
+        await axios.post("/api/checkoutCart", items);
+        console.log("6363");
+        commit("clearCart");
+        commit("setCheckoutStatus", "success");
+      } catch (err) {
+        console.log(err.message);
+        commit("setCheckoutStatus", "failed");
+      }
+    },
+  },
   getters: {
     getTotalPrice: (state) => {
       const totalPrice = state.cart.selectedItems.reduce((acc, { price, count }) => {
@@ -186,7 +197,10 @@ const store = createStore({
       const itemsByPage = 4;
       const result = state.cart.watchedItems.filter((item, index) => {
         console.log(itemsByPage * (slideNumber - 1));
-        return itemsByPage * (slideNumber - 1) <= index && index < itemsByPage * slideNumber
+        return (
+          itemsByPage * (slideNumber - 1) <= index &&
+          index < itemsByPage * slideNumber
+        );
       });
       console.log(result);
       return result;
