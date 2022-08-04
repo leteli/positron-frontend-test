@@ -46,8 +46,12 @@ function clear() {
       <div class="cart__main-section">
         <div class="cart__header">
           <h1 class="cart__title">Ваша корзина</h1>
-          <span class="cart__items-count">{{ totalCount }} {{ pluralizedItems }}</span>
-          <a @click="clear" href="#" class="cart__clear-cart">Очистить корзину</a>
+          <span class="cart__items-count"
+            >{{ totalCount }} {{ pluralizedItems }}</span
+          >
+          <a @click="clear" href="#" class="cart__clear-cart"
+            >Очистить корзину</a
+          >
         </div>
         <CartContent class="cart__items" />
         <SettingCheckbox class="cart__setting" />
