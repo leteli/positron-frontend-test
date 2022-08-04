@@ -1,6 +1,6 @@
 <script setup>
-import HeaderCart from "./components/HeaderCart.vue";
-import CartContainer from "./components/CartContainer.vue";
+import HeaderCart from "./HeaderCart.vue";
+import CartContainer from "./CartContainer.vue";
 </script>
 
 <template class="page">
